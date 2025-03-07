@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
+import { FiMail, FiMapPin } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
 
 const Contact = () => {
