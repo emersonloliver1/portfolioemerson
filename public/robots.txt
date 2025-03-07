@@ -1,0 +1,6 @@
+# https://emersonportfolio.netlify.app/
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://emersonportfolio.netlify.app/sitemap.xml 
