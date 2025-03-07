@@ -1,0 +1,29 @@
+.hero-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.profile-container {
+  display: flex;
+  justify-content: center;
+}
+
+.scroll-indicator {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-container {
+    display: none;
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+} 
