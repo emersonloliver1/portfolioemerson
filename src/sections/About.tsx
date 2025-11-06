@@ -41,18 +41,25 @@ const About = () => {
               Quem sou eu
             </h3>
             <p style={{ color: 'var(--color-dark)', marginBottom: '1rem' }}>
-              Olá! Sou Emerson Oliveira, um desenvolvedor fullstack apaixonado por criar soluções digitais 
-              que combinam design elegante com funcionalidade robusta. Com 26 anos de idade e experiência 
-              sólida no desenvolvimento web, estou sempre em busca de novos desafios.
+              Olá! Meu nome é Emerson Oliveira, sou um profissional alagoano com 27 anos de idade.
+              Iniciei minha trajetória no mercado de trabalho aos 16 anos, como aprendiz no Ministério da Economia,
+              onde fui selecionado através de um rigoroso processo seletivo. Essa experiência me proporcionou
+              valiosos aprendizados sobre disciplina, organização e trabalho em equipe — fundamentos que carrego
+              até hoje em minha carreira.
             </p>
             <p style={{ color: 'var(--color-dark)', marginBottom: '1rem' }}>
-              Minha jornada na programação começou com curiosidade e se transformou em paixão. 
-              Hoje, trabalho com as mais modernas tecnologias para entregar projetos que não apenas 
-              atendem, mas superam as expectativas dos clientes.
+              Atualmente, sou desenvolvedor fullstack especializado em soluções web. Minha experiência abrange
+              desde a criação de interfaces intuitivas e responsivas até a implementação de backends eficientes
+              e escaláveis. Trabalho com tecnologias modernas e sou apaixonado por transformar ideias em soluções
+              práticas e funcionais. Valorizo a lógica e a criatividade como ferramentas essenciais para resolver
+              problemas e criar aplicações que realmente fazem a diferença para os usuários.
             </p>
             <p style={{ color: 'var(--color-dark)' }}>
-              Quando não estou codificando, gosto de explorar novas tecnologias, contribuir para 
-              projetos open-source e compartilhar conhecimento com a comunidade de desenvolvedores.
+              Como entusiasta do aprendizado contínuo, estou sempre buscando aprimorar minhas habilidades técnicas
+              e explorar novas áreas no universo do desenvolvimento. Com atenção cuidadosa aos detalhes e abordagem
+              orientada a resultados, me comprometo em entregar projetos que unem qualidade técnica, inovação e
+              eficiência. Acredito que a combinação de integridade e determinação é o que me motiva a crescer
+              continuamente e buscar oportunidades desafiadoras que me ajudem a evoluir como profissional.
             </p>
           </motion.div>
 
