@@ -40,9 +40,9 @@ const Contact = () => {
           </p>
         </motion.div>
 
-        <div style={{ 
-          display: 'flex', 
-          flexDirection: 'column', 
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
           alignItems: 'center',
           maxWidth: '600px',
           margin: '0 auto'
@@ -51,8 +51,8 @@ const Contact = () => {
             {contactInfo.map((info, index) => (
               <motion.div
                 key={index}
-                style={{ 
-                  display: 'flex', 
+                style={{
+                  display: 'flex',
                   alignItems: 'center',
                   backgroundColor: 'var(--color-tertiary)',
                   padding: '2rem',
@@ -64,13 +64,13 @@ const Contact = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
-                whileHover={{ 
+                whileHover={{
                   transform: 'translateY(-5px)',
                   boxShadow: '0 10px 20px rgba(0, 0, 0, 0.2)'
                 }}
               >
-                <div style={{ 
-                  color: 'var(--color-secondary)', 
+                <div style={{
+                  color: 'var(--color-secondary)',
                   marginRight: '1.5rem',
                   backgroundColor: 'var(--color-primary)',
                   padding: '1rem',
@@ -87,8 +87,8 @@ const Contact = () => {
                   </h4>
                   <a
                     href={info.link}
-                    style={{ 
-                      color: 'var(--color-dark)', 
+                    style={{
+                      color: 'var(--color-dark)',
                       transition: 'color 0.3s ease',
                       fontSize: '1.125rem'
                     }}

@@ -8,6 +8,7 @@ import Portfolio from './sections/Portfolio';
 import Contact from './sections/Contact';
 import Footer from './components/Footer';
 import Loader from './components/Loader';
+import WhatsAppButton from './components/WhatsAppButton';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -37,6 +38,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 }

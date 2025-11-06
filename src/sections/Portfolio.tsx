@@ -167,7 +167,11 @@ const Portfolio = () => {
   }, []);
 
   return (
-    <section id="portfolio" style={{ padding: '5rem 0', backgroundColor: 'var(--color-tertiary)' }}>
+    <section id="portfolio" style={{
+      padding: '6rem 0',
+      background: 'linear-gradient(180deg, #ffffff 0%, #f8fafc 100%)',
+      position: 'relative'
+    }}>
       <div className="container">
         <motion.div
           style={{ textAlign: 'center', marginBottom: '4rem' }}
@@ -184,91 +188,150 @@ const Portfolio = () => {
 
         {/* Filtro de categorias */}
         <motion.div
-          style={{ 
-            display: 'flex', 
-            flexWrap: 'wrap', 
-            justifyContent: 'center', 
-            gap: '1rem', 
-            marginBottom: '3rem' 
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            gap: '1rem',
+            marginBottom: '3rem',
+            padding: '1rem',
+            background: 'white',
+            borderRadius: '1rem',
+            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.06)',
+            maxWidth: '800px',
+            margin: '0 auto 3rem',
           }}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
           {categories.map((category, index) => (
-            <button
+            <motion.button
               key={index}
               style={{
-                padding: '0.5rem 1.5rem',
-                borderRadius: '9999px',
-                transition: 'all 0.3s ease',
-                backgroundColor: activeCategory === category ? 'var(--color-secondary)' : 'var(--color-primary)',
-                color: activeCategory === category ? 'var(--color-primary)' : 'var(--color-light)',
-                border: 'none',
+                padding: '0.75rem 1.75rem',
+                borderRadius: '12px',
+                fontWeight: 600,
+                fontSize: '0.95rem',
+                backgroundColor: activeCategory === category ? 'var(--color-secondary)' : 'transparent',
+                color: activeCategory === category ? 'white' : 'var(--color-light)',
+                border: activeCategory === category ? 'none' : '2px solid rgba(0, 0, 0, 0.06)',
                 cursor: 'pointer',
-                boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05)'
+                position: 'relative',
+                overflow: 'hidden',
               }}
               onClick={() => setActiveCategory(category)}
+              whileHover={{
+                scale: 1.05,
+                backgroundColor: activeCategory === category ? 'var(--color-secondary)' : '#f0f9ff',
+              }}
+              whileTap={{ scale: 0.95 }}
+              animate={{
+                boxShadow: activeCategory === category
+                  ? '0 4px 16px rgba(14, 165, 233, 0.3)'
+                  : '0 0 0 rgba(0, 0, 0, 0)',
+              }}
             >
               {category}
-            </button>
+              {activeCategory === category && (
+                <motion.div
+                  layoutId="activeCategory"
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    background: 'var(--gradient-primary)',
+                    borderRadius: '12px',
+                    zIndex: -1,
+                  }}
+                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                />
+              )}
+            </motion.button>
           ))}
         </motion.div>
 
         {/* Grade de projetos */}
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
-          gap: '2rem' 
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+          gap: '2.5rem'
         }}>
           {filteredProjects.map((project, index) => (
             <motion.div
               key={project.id}
-              style={{ 
-                backgroundColor: 'var(--color-primary)', 
-                borderRadius: '1rem', 
+              style={{
+                backgroundColor: 'white',
+                borderRadius: '1.5rem',
                 overflow: 'hidden',
                 height: '100%',
                 display: 'flex',
                 flexDirection: 'column',
-                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.05)',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.06)',
                 border: '1px solid rgba(0, 0, 0, 0.05)',
-                transition: 'all 0.3s ease'
+                position: 'relative',
               }}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{
-                y: -5,
-                boxShadow: '0 10px 20px rgba(0, 0, 0, 0.1)'
+                y: -10,
+                boxShadow: '0 20px 40px rgba(14, 165, 233, 0.15)',
               }}
             >
-              <div style={{ 
-                height: '16rem', 
-                backgroundColor: '#f8fafc', 
+              <div style={{
+                height: '18rem',
+                backgroundColor: '#f8fafc',
                 position: 'relative',
-                overflow: 'hidden'
+                overflow: 'hidden',
               }}>
                 {project.images ? (
-                  <img
-                    src={project.images[currentImageIndex % project.images.length]}
-                    alt={`${project.title} screenshot ${currentImageIndex + 1}`}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      transition: 'all 0.5s ease-in-out'
+                  <>
+                    <img
+                      src={project.images[currentImageIndex % project.images.length]}
+                      alt={`${project.title} screenshot ${currentImageIndex + 1}`}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        transition: 'all 0.6s ease-in-out',
+                      }}
+                    />
+                    {/* Gradient overlay */}
+                    <div style={{
+                      position: 'absolute',
+                      inset: 0,
+                      background: 'linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.3))',
+                      opacity: 0,
+                      transition: 'opacity 0.3s ease',
                     }}
-                  />
+                    className="project-overlay" />
+
+                    {/* Category badge */}
+                    <div style={{
+                      position: 'absolute',
+                      top: '1rem',
+                      right: '1rem',
+                      padding: '0.5rem 1rem',
+                      background: 'rgba(255, 255, 255, 0.95)',
+                      backdropFilter: 'blur(10px)',
+                      borderRadius: '8px',
+                      fontSize: '0.75rem',
+                      fontWeight: 600,
+                      color: 'var(--color-secondary)',
+                      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+                    }}>
+                      {project.category === 'Projetos de Clientes' ? '🤝 Cliente' : '⚡ Proprietário'}
+                    </div>
+                  </>
                 ) : (
-                  <div style={{ 
-                    position: 'absolute', 
-                    inset: 0, 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    justifyContent: 'center' 
+                  <div style={{
+                    position: 'absolute',
+                    inset: 0,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
                   }}>
                     <p style={{ color: 'var(--color-light)', fontSize: '1.125rem', fontWeight: 500 }}>
                       Imagem do Projeto
@@ -293,72 +356,95 @@ const Portfolio = () => {
                   {project.description}
                 </p>
                 
-                <div style={{ 
-                  display: 'flex', 
-                  flexWrap: 'wrap', 
-                  gap: '0.5rem', 
-                  marginBottom: '1rem' 
+                <div style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '0.5rem',
+                  marginBottom: '1.5rem'
                 }}>
                   {project.technologies.map((tech, idx) => (
-                    <span 
-                      key={idx} 
-                      style={{ 
-                        fontSize: '0.75rem', 
-                        backgroundColor: 'var(--color-tertiary)', 
-                        color: 'var(--color-light)', 
-                        padding: '0.25rem 0.75rem', 
-                        borderRadius: '9999px',
-                        border: '1px solid rgba(0, 0, 0, 0.05)'
+                    <motion.span
+                      key={idx}
+                      style={{
+                        fontSize: '0.8rem',
+                        background: 'linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%)',
+                        color: '#0369a1',
+                        padding: '0.4rem 0.9rem',
+                        borderRadius: '8px',
+                        fontWeight: 600,
+                        border: '1px solid #bae6fd',
                       }}
+                      whileHover={{
+                        scale: 1.05,
+                        background: 'linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%)',
+                        color: 'white',
+                        borderColor: '#0284c7',
+                      }}
+                      transition={{ duration: 0.2 }}
                     >
                       {tech}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
                 
-                <div style={{ display: 'flex', gap: '1rem', marginTop: 'auto' }}>
-                  <a
+                <div style={{
+                  display: 'flex',
+                  gap: '0.75rem',
+                  marginTop: 'auto',
+                  paddingTop: '1rem',
+                  borderTop: '1px solid rgba(0, 0, 0, 0.06)',
+                }}>
+                  <motion.a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{ 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      color: 'var(--color-secondary)',
-                      transition: 'all 0.3s ease'
+                    style={{
+                      flex: 1,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '0.5rem',
+                      padding: '0.75rem 1rem',
+                      background: 'var(--gradient-primary)',
+                      color: 'white',
+                      borderRadius: '10px',
+                      fontWeight: 600,
+                      fontSize: '0.9rem',
+                      textDecoration: 'none',
+                      boxShadow: '0 2px 8px rgba(14, 165, 233, 0.2)',
                     }}
-                    onMouseOver={(e) => {
-                      e.currentTarget.style.textDecoration = 'underline';
-                      e.currentTarget.style.transform = 'translateY(-2px)';
+                    whileHover={{
+                      scale: 1.05,
+                      boxShadow: '0 4px 16px rgba(14, 165, 233, 0.3)',
                     }}
-                    onMouseOut={(e) => {
-                      e.currentTarget.style.textDecoration = 'none';
-                      e.currentTarget.style.transform = 'translateY(0)';
-                    }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <FiExternalLink style={{ marginRight: '0.25rem' }} /> Ver projeto
-                  </a>
-                  <a
+                    <FiExternalLink size={16} />
+                    Ver Projeto
+                  </motion.a>
+                  <motion.a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{ 
-                      display: 'flex', 
-                      alignItems: 'center', 
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      padding: '0.75rem',
+                      border: '2px solid rgba(14, 165, 233, 0.3)',
+                      borderRadius: '10px',
                       color: 'var(--color-secondary)',
-                      transition: 'all 0.3s ease'
+                      textDecoration: 'none',
                     }}
-                    onMouseOver={(e) => {
-                      e.currentTarget.style.textDecoration = 'underline';
-                      e.currentTarget.style.transform = 'translateY(-2px)';
+                    whileHover={{
+                      scale: 1.1,
+                      backgroundColor: '#f0f9ff',
+                      borderColor: 'var(--color-secondary)',
                     }}
-                    onMouseOut={(e) => {
-                      e.currentTarget.style.textDecoration = 'none';
-                      e.currentTarget.style.transform = 'translateY(0)';
-                    }}
+                    whileTap={{ scale: 0.9 }}
                   >
-                    <FiGithub style={{ marginRight: '0.25rem' }} /> Código fonte
-                  </a>
+                    <FiGithub size={18} />
+                  </motion.a>
                 </div>
               </div>
             </motion.div>

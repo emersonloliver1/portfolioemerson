@@ -10,7 +10,11 @@ const About = () => {
   ];
 
   return (
-    <section id="about" style={{ padding: '5rem 0', backgroundColor: 'var(--color-tertiary)' }}>
+    <section id="about" style={{
+      padding: '6rem 0',
+      background: 'linear-gradient(180deg, #f8fafc 0%, #ffffff 100%)',
+      position: 'relative'
+    }}>
       <div className="container">
         <motion.div
           style={{ textAlign: 'center', marginBottom: '4rem' }}
@@ -72,40 +76,84 @@ const About = () => {
             <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--color-light)', marginBottom: '1.5rem' }}>
               Minhas habilidades
             </h3>
-            <div style={{ 
-              display: 'grid', 
-              gridTemplateColumns: '1fr', 
-              gap: '1.5rem' 
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+              gap: '1.5rem'
             }}>
               {skills.map((skill, index) => (
                 <motion.div
                   key={index}
-                  style={{ 
-                    backgroundColor: 'var(--color-primary)', 
-                    padding: '1.5rem', 
-                    borderRadius: '0.5rem' 
+                  style={{
+                    backgroundColor: 'white',
+                    padding: '2rem',
+                    borderRadius: '1.5rem',
+                    border: '1px solid rgba(0, 0, 0, 0.06)',
+                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.06)',
                   }}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: 0.1 * index }}
+                  whileHover={{
+                    y: -5,
+                    boxShadow: '0 8px 30px rgba(14, 165, 233, 0.15)',
+                  }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
-                    <span style={{ color: 'var(--color-secondary)', marginRight: '0.75rem' }}>{skill.icon}</span>
-                    <h4 style={{ fontSize: '1.25rem', fontWeight: 500, color: 'var(--color-light)' }}>{skill.name}</h4>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    marginBottom: '1.5rem'
+                  }}>
+                    <div style={{
+                      width: '50px',
+                      height: '50px',
+                      borderRadius: '12px',
+                      background: 'linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: 'var(--color-secondary)',
+                      marginRight: '1rem',
+                    }}>
+                      {skill.icon}
+                    </div>
+                    <h4 style={{
+                      fontSize: '1.25rem',
+                      fontWeight: 700,
+                      color: 'var(--color-light)'
+                    }}>
+                      {skill.name}
+                    </h4>
                   </div>
-                  <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                  <ul style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.75rem'
+                  }}>
                     {skill.items.map((item, idx) => (
-                      <li key={idx} style={{ color: 'var(--color-dark)', display: 'flex', alignItems: 'center' }}>
-                        <span style={{ 
-                          width: '0.5rem', 
-                          height: '0.5rem', 
-                          backgroundColor: 'var(--color-secondary)', 
-                          borderRadius: '50%', 
-                          marginRight: '0.5rem' 
+                      <motion.li
+                        key={idx}
+                        style={{
+                          color: 'var(--color-dark)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          fontSize: '0.95rem',
+                        }}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 * idx }}
+                      >
+                        <span style={{
+                          width: '6px',
+                          height: '6px',
+                          backgroundColor: 'var(--color-secondary)',
+                          borderRadius: '50%',
+                          marginRight: '0.75rem'
                         }}></span>
                         {item}
-                      </li>
+                      </motion.li>
                     ))}
                   </ul>
                 </motion.div>
