@@ -1,11 +1,5 @@
 import { useEffect, useState } from 'react';
-import Navbar from './components/Navbar';
-import Hero from './sections/Hero';
 import Credentials from './sections/Credentials';
-import About from './sections/About';
-import Services from './sections/Services';
-import Portfolio from './sections/Portfolio';
-import Contact from './sections/Contact';
 import Footer from './components/Footer';
 import Loader from './components/Loader';
 import WhatsAppButton from './components/WhatsAppButton';
@@ -14,10 +8,9 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simula um tempo de carregamento
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1200);
 
     return () => clearTimeout(timer);
   }, []);
@@ -28,14 +21,18 @@ function App() {
 
   return (
     <div className="min-h-screen">
-      <Navbar />
       <main>
-        <Hero />
+        <section className="hero-shell">
+          <div className="container hero-content">
+            <span className="eyebrow">Portfolio atualizado</span>
+            <h1>Emerson Oliveira</h1>
+            <p>
+              Desenvolvedor fullstack com foco em interfaces modernas, entregas
+              consistentes e projetos que performam bem em producao.
+            </p>
+          </div>
+        </section>
         <Credentials />
-        <About />
-        <Services />
-        <Portfolio />
-        <Contact />
       </main>
       <Footer />
       <WhatsAppButton />
