@@ -28,7 +28,7 @@ function App() {
             <h1>Emerson Oliveira</h1>
             <p>
               Desenvolvedor fullstack com foco em interfaces modernas, entregas
-              consistentes e projetos pensados para perfrmance, manutencao e
+              consistentes e projetos pensados para performance, manutencao e
               uma otima experiencia de uso.
             </p>
           </div>
